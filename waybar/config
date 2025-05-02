@@ -3,7 +3,7 @@
   "position": "top",
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock"],
-  "modules-right": ["pulseaudio", "network", "battery", "tray"],
+  "modules-right": ["pulseaudio", "network", "custom/spotify"],
 
   "clock": {
     "format": "{:%a %b %d %I:%M %p}",
@@ -16,14 +16,17 @@
     "format-muted": " muted"
   },
 
-  "battery": {
-    "format": "{capacity}% ",
-    "format-charging": "{capacity}% "
-  },
-
   "network": {
     "format-wifi": " {essid} ({signalStrength}%)",
     "format-ethernet": " {ipaddr}",
     "format-disconnected": " Disconnected"
+  },
+
+  "custom/spotify": {
+  	"exec": "/usr/bin/python3 /home/gavin/bin/mediaplayer.py --player spotify",
+	"return-type": "json",
+	"on-click": "playerctl play-pause",
+	"on-scroll-up": "playerctl next",
+	"on-scroll-down": "playerctl previous"
   }
 }
