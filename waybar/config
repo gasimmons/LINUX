@@ -1,9 +1,8 @@
 {
   "layer": "top",
   "position": "top",
-  "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["clock"],
-  "modules-right": ["pulseaudio", "network", "custom/spotify"],
+  "modules-left": ["hyprland/workspaces", "clock"],
+  "modules-right": ["custom/brightness", "pulseaudio", "network", "custom/spotify"],
 
   "clock": {
     "format": "{:%a %b %d %I:%M %p}",
@@ -22,10 +21,18 @@
     "format-disconnected": " Disconnected"
   },
 
+  "custom/brightness": {
+	"format": " {}%",
+  	"interval": 10,
+  	"exec": "~/.config/waybar/scripts/get_brightness.sh",
+  	"on-scroll-up": "~/.config/waybar/scripts/adjust_brightness.sh up",
+  	"on-scroll-down": "~/.config/waybar/scripts/adjust_brightness.sh down"
+  },
+
   "custom/spotify": {
   	"exec": "/usr/bin/python3 /home/gavin/bin/mediaplayer.py --player spotify",
 	"return-type": "json",
-	"on-click": "playerctl play-pause",
+    "on-click": "sh -c 'if pgrep spotify >/dev/null; then playerctl play-pause; else spotify & fi'",
 	"on-scroll-up": "playerctl next",
 	"on-scroll-down": "playerctl previous"
   }
