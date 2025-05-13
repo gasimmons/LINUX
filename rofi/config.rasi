@@ -1,0 +1,11 @@
+configuration {
+    font: "JetBrainsMono Nerd Font 12";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    modi: "drun";
+    sidebar-mode: true;
+    drun-lines: 4;
+    drun-columns: 1;
+}
+
+@import "themes/minimal.rasi"
